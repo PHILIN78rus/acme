@@ -10,25 +10,25 @@ class LocalStorage:
         self._id_counter = 0
         self._storage = {}
 
-    def create(self, note: model.Note) -> str:
+    def create(self, calendar: model.Calendar) -> str:
         self._id_counter += 1
-        note.id = str(self._id_counter)
-        self._storage[note.id] = note
-        return note.id
+        calendar.id = str(self._id_counter)
+        self._storage[calendar.id] = calendar
+        return calendar.id
 
-    def list(self) -> List[model.Note]:
+    def list(self) -> List[model.Calendar]:
         return list(self._storage.values())
 
-    def read(self, _id: str) -> model.Note:
+    def read(self, _id: str) -> model.Calendar:
         if _id not in self._storage:
             raise StorageException(f"{_id} not found in storage")
         return self._storage[_id]
 
-    def update(self, _id: str, note: model.Note):
+    def update(self, _id: str, calendar: model.Calendar):
         if _id not in self._storage:
             raise StorageException(f"{_id} not found in storage")
-        note.id = _id
-        self._storage[note.id] = note
+        calendar.id = _id
+        self._storage[calendar.id] = calendar
 
     def delete(self, _id: str):
         if _id not in self._storage:
