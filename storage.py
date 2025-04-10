@@ -11,6 +11,9 @@ class LocalStorage:
         self._storage = {}
 
     def create(self, calendar: model.Calendar) -> str:
+        for existing_calendar in self._storage.values():
+            if existing_calendar.data == calendar.data:
+                raise StorageException(f"Data '{existing_calendar.data}' already exists.")
         self._id_counter += 1
         calendar.id = str(self._id_counter)
         self._storage[calendar.id] = calendar

@@ -25,6 +25,8 @@ class CalendarLogic:
             raise LogicException(f"title lenght > MAX: {TITLE_LIMIT}")
         if calendar.text is None or len(calendar.text) > TEXT_LIMIT:
             raise LogicException(f"text lenght > MAX: {TEXT_LIMIT}")
+        if calendar.data is None:
+            raise LogicException("wrong data")
 
     def create(self, calendar: model.Calendar) -> str:
         self._validate_calendar(calendar)
