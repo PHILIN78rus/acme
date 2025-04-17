@@ -89,10 +89,10 @@ def update(_data: str):
         return f"failed to UPDATE with: {ex}", 404
 
 
-@app.route(NOTE_API_ROOT + "/<_id>/", methods=["DELETE"])
-def delete(_id: str):
+@app.route(NOTE_API_ROOT + "/<_data>/", methods=["DELETE"])
+def delete(_data: str):
     try:
-        _calendar_logic.delete(_id)
+        _calendar_logic.delete(_data)
         return "deleted", 200
     except Exception as ex:
         return f"failed to DELETE with: {ex}", 404

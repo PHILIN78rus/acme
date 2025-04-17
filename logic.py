@@ -54,8 +54,8 @@ class CalendarLogic:
         except Exception as ex:
             raise LogicException(f"failed UPDATE operation with: {ex}")
 
-    def delete(self, _id: str):
+    def delete(self, _data: str):
         try:
-            return self._calendar_db.delete(_id)
+            return self._calendar_db.delete(_data)
         except Exception as ex:
             raise LogicException(f"failed DELETE operation with: {ex}")

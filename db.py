@@ -34,8 +34,8 @@ class CalendarDB:
         except Exception as ex:
             raise DBException(f"failed UPDATE operation with: {ex}")
 
-    def delete(self, _id: str):
+    def delete(self, _data: str):
         try:
-            return self._storage.delete(_id)
+            return self._storage.delete(_data)
         except Exception as ex:
             raise DBException(f"failed DELETE operation with: {ex}")

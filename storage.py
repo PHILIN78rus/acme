@@ -37,7 +37,10 @@ class LocalStorage:
                 return
         raise StorageException(f"{_data} not found in storage")
 
-    def delete(self, _id: str):
-        if _id not in self._storage:
-            raise StorageException(f"{_id} not found in storage")
-        del self._storage[_id]
+    def delete(self, _data: str):
+        for existing_calendar in self._storage.values():
+            if existing_calendar.data == _data:
+                _id = existing_calendar.id
+                del self._storage[_id]
+                return
+        raise StorageException(f"{_data} not found in storage")
