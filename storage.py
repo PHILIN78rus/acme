@@ -29,11 +29,13 @@ class LocalStorage:
         raise StorageException(f"{_data} not found in storage")
         
 
-    def update(self, _id: str, calendar: model.Calendar):
-        if _id not in self._storage:
-            raise StorageException(f"{_id} not found in storage")
-        calendar.id = _id
-        self._storage[calendar.id] = calendar
+    def update(self, _data: str, calendar: model.Calendar):
+        for existing_calendar in self._storage.values():
+            if existing_calendar.data == _data:
+                calendar.id = existing_calendar.id
+                self._storage[calendar.id] = calendar
+                return
+        raise StorageException(f"{_data} not found in storage")
 
     def delete(self, _id: str):
         if _id not in self._storage:

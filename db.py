@@ -28,9 +28,9 @@ class CalendarDB:
         except Exception as ex:
             raise DBException(f"failed READ operation with: {ex}")
 
-    def update(self, _id: str, calendar: model.Calendar):
+    def update(self, _data: str, calendar: model.Calendar):
         try:
-            return self._storage.update(_id, calendar)
+            return self._storage.update(_data, calendar)
         except Exception as ex:
             raise DBException(f"failed UPDATE operation with: {ex}")
 

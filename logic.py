@@ -47,10 +47,10 @@ class CalendarLogic:
         except Exception as ex:
             raise LogicException(f"failed READ operation with: {ex}")
 
-    def update(self, _id: str, calendar: model.Calendar):
+    def update(self, _data: str, calendar: model.Calendar):
         self._validate_calendar(calendar)
         try:
-            return self._calendar_db.update(_id, calendar)
+            return self._calendar_db.update(_data, calendar)
         except Exception as ex:
             raise LogicException(f"failed UPDATE operation with: {ex}")
 

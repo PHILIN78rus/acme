@@ -78,12 +78,12 @@ def read(_data: str):
         return f"failed to READ with: {ex}", 404
 
 
-@app.route(NOTE_API_ROOT + "/<_id>/", methods=["PUT"])
-def update(_id: str):
+@app.route(NOTE_API_ROOT + "/<_data>/", methods=["PUT"])
+def update(_data: str):
     try:
         data = request.get_data().decode('utf-8')
         calendar = _from_raw(data)
-        _calendar_logic.update(_id, calendar)
+        _calendar_logic.update(_data, calendar)
         return "updated", 200
     except Exception as ex:
         return f"failed to UPDATE with: {ex}", 404
