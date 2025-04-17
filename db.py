@@ -22,9 +22,9 @@ class CalendarDB:
         except Exception as ex:
             raise DBException(f"failed LIST operation with: {ex}")
 
-    def read(self, _id: str) -> model.Calendar:
+    def read(self, _data: str) -> model.Calendar:
         try:
-            return self._storage.read(_id)
+            return self._storage.read(_data)
         except Exception as ex:
             raise DBException(f"failed READ operation with: {ex}")
 

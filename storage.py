@@ -17,15 +17,17 @@ class LocalStorage:
         self._id_counter += 1
         calendar.id = str(self._id_counter)
         self._storage[calendar.id] = calendar
-        return calendar.id
+        return calendar.data
 
     def list(self) -> List[model.Calendar]:
         return list(self._storage.values())
 
-    def read(self, _id: str) -> model.Calendar:
-        if _id not in self._storage:
-            raise StorageException(f"{_id} not found in storage")
-        return self._storage[_id]
+    def read(self, _data: str) -> model.Calendar:
+        for existing_calendar in self._storage.values():
+            if existing_calendar.data == _data:
+                return existing_calendar
+        raise StorageException(f"{_data} not found in storage")
+        
 
     def update(self, _id: str, calendar: model.Calendar):
         if _id not in self._storage:

@@ -41,9 +41,9 @@ class CalendarLogic:
         except Exception as ex:
             raise LogicException(f"failed LIST operation with: {ex}")
 
-    def read(self, _id: str) -> model.Calendar:
+    def read(self, _data: str) -> model.Calendar:
         try:
-            return self._calendar_db.read(_id)
+            return self._calendar_db.read(_data)
         except Exception as ex:
             raise LogicException(f"failed READ operation with: {ex}")
 
